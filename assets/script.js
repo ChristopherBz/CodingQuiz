@@ -8,7 +8,7 @@ var choice1 = document.getElementById("1");
 var choice2 = document.getElementById("2");
 var choice3 = document.getElementById("3");
 var choice4= document.getElementById("4");
-var finalScore= document.getElementById("finalScore");
+var highScore= document.getElementById("highScore");
 var endMessage = document.getElementById("endMessage");
 var result = document.getElementById("result");
 var scoreList = document.getElementById("scorelist");
@@ -63,7 +63,7 @@ var questions = [
 //Challenge Page
 intro.style.display = "block";
 quiz.style.display = "none";
-finalScore.style.display = "none";
+highScore.style.display = "none";
 
 //Start Quiz Button
 var startBtn = document.getElementById("startBtn");
@@ -85,7 +85,7 @@ function startGame() {
     question.style.display ="block";
     header.style.display = "block";
     intro.style.display = "none";
-    finalScore.style.display = "none";
+    highScore.style.display = "none";
 
 
     var timeInterval = setInterval(function() {
@@ -137,7 +137,7 @@ function checkAnswer(answer) {
 function resultRender() {
    quiz.style.display = "none";
    intro.style.display = "none";
-   finalScore.style.display = "block";
+   highScore.style.display = "block";
 
    if (timeLeft === 0 || questions.length -1) { 
     result.textContent = "Your final score is " + timeLeft + ".";
@@ -156,36 +156,6 @@ userInfo.addEventListener("click", function() {
     })
 
 
-    var clearBtn = document.getElementById("#clear");
-
-    // Clear High Scores
-    clearBtn.addEventListener("click", function() {
-        localStorage.clear();
-    })
-    
-    var finalScore = {
-      contactInfo: '',
-      timeleft: ""
-    }
-    
-    var finalScore = [];
-    
-    
-    //Load Scores 
-    var loadScores = function() {
-      var finalScore = localStorage.getItem("contactInfo, timeLeft");
-      
-          if (!finalScore) {
-              return false;
-          }
-        
-           for (var i = 0; i < finalScore.length; i++) {
-            var finalScore = finalScore[i];
-            var listItemEl = document.createElement("li");
-            listItemEl.textContent = finalScore;
-          }    
-        finalScore.push(finalScore)   
-    }
     
     
     
