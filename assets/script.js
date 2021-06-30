@@ -126,7 +126,7 @@ function checkAnswer(answer) {
     }
 
     if (questions.length === runningQuestionIndex+1) {
-        resultRender(); // If it has gone through all questions, show final score
+        resultRender(); 
         return;
     }
         runningQuestionIndex++;
@@ -145,15 +145,24 @@ function resultRender() {
 }
 
 //Capture Score and Name 
-userInfo.addEventListener("click", function() {
-    var contactInfo = document.getElementById("#contactInfo").value;
+function setScore() {
+    localStorage.setItem("result", score);
+    localStorage.setItem("name",  document.getElementById('name').value);
+    getScore();
+}
 
-    localStorage.setItem("contactInfo", JSON.stringify (contactInfo));
-    localStorage.setItem("timeLeft", JSON.stringify(timeLeft));
-    console.log(userInfo);
+
+function getScore() {
+    var quizContent = `
+    <h2>` + localStorage.getItem("name") + `'s highscore is:</h2>
+    <h1>` + localStorage.getItem("result") + `</h1><br> 
     
-    loadScores();
-    })
+    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
+    
+    `;
+
+    document.getElementById("result").innerHTML = quizContent;
+}
 
 
     
