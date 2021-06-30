@@ -84,7 +84,7 @@ ul {
     list-style: none;
 }
 
-.choice-button {
+.select-button {
     border: none;
     border-radius: 5px;
     height: 30px;
@@ -102,7 +102,7 @@ ul {
     display:inline-block;
 }
 
-.choice-button:hover {
+.select-button:hover {
     background-color: var(--second);
 } 
 

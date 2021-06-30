@@ -3,59 +3,60 @@ var header = document.getElementById("header");
 var intro = document.getElementById("intro");
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
-var choices = document.getElementById("choices");
-var choice1 = document.getElementById("1");
-var choice2 = document.getElementById("2");
-var choice3 = document.getElementById("3");
-var choice4= document.getElementById("4");
+var select = document.getElementById("select");
+var select1 = document.getElementById("1");
+var select2 = document.getElementById("2");
+var select3 = document.getElementById("3");
+var select4= document.getElementById("4");
 var highScore= document.getElementById("highScore");
 var endMessage = document.getElementById("endMessage");
 var result = document.getElementById("result");
+var initialInput = document.getElementById("initialInput");
 var scoreList = document.getElementById("scorelist");
 
 
 //Questions 
 var questions = [
     { question: 'When was javascript created?', 
-    choice1 : "1. 1990 ",
-    choice2 : "2. 1980 ",
-    choice3 : "3. 1995 ",
-    choice4 : "4. 2005 ",
+    select1 : "1. 1990 ",
+    select2 : "2. 1980 ",
+    select3 : "3. 1995 ",
+    select4 : "4. 2005 ",
     correct: "3"
     },
     { question: "Which isn't a JavaScript Data Type?", 
-    choice1 : "1. Number ",
-    choice2 : "2. Sring ",
-    choice3 : "3. Boolean ",
-    choice4 : "4. Function ",
+    select1 : "1. Number ",
+    select2 : "2. Sring ",
+    select3 : "3. Boolean ",
+    select4 : "4. Function ",
     correct: "4"
     },
     { question: "Which company developed JavaScript?", 
-    choice1 : "1. IBM ",
-    choice2 : "2. Netscape ",
-    choice3 : "3. Microsoft ",
-    choice4 : "4. Bell Labs ",
+    select1 : "1. IBM ",
+    select2 : "2. Netscape ",
+    select3 : "3. Microsoft ",
+    select4 : "4. Bell Labs ",
     correct: "2"
     },
     { question: "Inside which HTML element do we put the JavaScript?", 
-    choice1 : "1. head ",
-    choice2 : "2. meta ",
-    choice3 : "3. script ",
-    choice4 : "4. style ",
+    select1 : "1. head ",
+    select2 : "2. meta ",
+    select3 : "3. script ",
+    select4 : "4. style ",
     correct: "3"
     },
     { question: "Which of the following is correct about features of JavaScript?", 
-    choice1 : "1. It can not Handling dates and time. ",
-    choice2 : "2. JavaScript is a object-based scripting language. ",
-    choice3 : "3. JavaScript is not interpreter based scripting language. ",
-    choice4 : "4. All of the above ",
+    select1 : "1. It can not Handling dates and time. ",
+    select2 : "2. JavaScript is a object-based scripting language. ",
+    select3 : "3. JavaScript is not interpreter based scripting language. ",
+    select4 : "4. All of the above ",
     correct: "2"
     },
     { question: "Which of the following is not Javascript frameworks or libraries?", 
-    choice1 : "1. Polymer ",
-    choice2 : "2. Meteor ",
-    choice3 : "3. Cassandra ",
-    choice4 : "4. jQuery ",
+    select1 : "1. Polymer ",
+    select2 : "2. Meteor ",
+    select3 : "3. Cassandra ",
+    select4 : "4. jQuery ",
     correct: "3"
     },
 ]  
@@ -109,10 +110,10 @@ var runningQuestionIndex = 0;
 function renderQuestion() {
     var q = questions[runningQuestionIndex];
     question.innerHTML = q.question;
-    choice1.innerHTML = q.choice1;
-    choice2.innerHTML = q.choice2;
-    choice3.innerHTML = q.choice3;
-    choice4.innerHTML = q.choice4;
+    select1.innerHTML = q.select1;
+    select2.innerHTML = q.select2;
+    select3.innerHTML = q.select3;
+    select4.innerHTML = q.select4;
 }
 
 // Check Answers
@@ -140,28 +141,20 @@ function resultRender() {
    highScore.style.display = "block";
 
    if (timeLeft === 0 || questions.length -1) { 
-    result.textContent = "Your final score is " + timeLeft + ".";
+    result.textContent = "Your Score is " + timeLeft + ".";
    }
 }
 
-//Capture Score and Name 
-function setScore() {
-    localStorage.setItem("result", score);
-    localStorage.setItem("name",  document.getElementById('name').value);
-    getScore();
-}
+// enter initial and store highscore in local storage
+function storeHighScores(event) {
+    event.preventDefault();
 
-
-function getScore() {
-    var quizContent = `
-    <h2>` + localStorage.getItem("name") + `'s highscore is:</h2>
-    <h1>` + localStorage.getItem("result") + `</h1><br> 
-    
-    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
-    
-    `;
-
-    document.getElementById("result").innerHTML = quizContent;
+    // stop function is initial is blank
+    if (initialInput.value === "") {
+        alert("Please enter your initials!");
+        return;
+    } 
+   
 }
 
 
