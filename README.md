@@ -1,5 +1,5 @@
 # CodingQuiz
-![image](https://user-images.githubusercontent.com/81110745/123533770-7a5f6500-d75b-11eb-9bb8-274f4cadef1b.png)
+![Screenshot](https://github.com/ChristopherBz/CodingQuiz/blob/56c89d5567d77b947982d00e29dafd2119ae1379/assets/Coding%20Quiz.gif)
 
 Repo: https://github.com/ChristopherBz/CodingQuiz
 
